@@ -12,7 +12,7 @@ conection.connect((error)=>{
         console.log('error en la conexion de la database'+error)
     }
     else{
-        console.log('conexión exitósa!')
+        console.log('conexión a la database exitosa!')
     }
 })
 
