@@ -25,10 +25,18 @@ dotenv.config({path:'./env/.env'})
 
 //trabajar con las cookies
 
-// app.use(cookieParser);
+app.use(cookieParser());
 
 //llamar al router
 app.use('/', require('./routes/router'))
+
+//eliminar la cache para que no se pueda volver atras
+app.use(function(req,res,next){
+    if(!req.username){
+        res.header('Cache-Control','private, no-cache, no-store, must-revalidate');
+        next();
+    }
+})
 
 
 //poner el marcha el server

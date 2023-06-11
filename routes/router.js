@@ -5,12 +5,12 @@ const authController = require('../controllers/authcontrollers');
 const conection = require('../database/db');
 const res = require('express/lib/response');
 
-router.get('/',(req,res)=>{
+router.get('/', authController.isAuthenticated,(req,res)=>{
     res.render('index')
 })
 
 router.get('/login',(req,res)=>{
-    res.render('login')
+    res.render('login', {alert:false})
 })
 
 router.get('/register',(req,res)=>{
@@ -23,5 +23,6 @@ router.get('/cargar',(req,res)=>{
 
 router.post('/register',authController.register);
 router.post('/login',authController.login);
+router.get('/logout',authController.logout);
 
 module.exports = router;

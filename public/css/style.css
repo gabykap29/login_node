@@ -1,22 +1,7 @@
-
-main{
-    background-color: white;
+#height-cuerpo{
+    height: calc(100vh - 56px);
+    margin: 0;
 }
-#inputs{
-    padding-left: 90px;
+#btn-salir{
+    width: 155px;
 }
-
-#Usuario{
-    width: 500px;
-}
-#passwd{
-    width: 500px;
-}
-#btn-submit{
-    width: 200px;
-}
-form{
-    margin-top:85px ;
-    border-radius: 5px;
-}
-
