@@ -14,7 +14,7 @@ exports.register = async(req,res)=>{
         const pass = req.body.pass;
         let passHash = await bcryptjs.hash(pass,8);
         // console.log(passHash);
-        conection.query('INSERT INTO users SET ?',{firsName:firsName, lastName:lastName, user:user, pass:passHash}, (error,results)=>{
+        conection.query('INSERT INTO users SET ?',{firsName:firsName, lastName:lastName, username:user, pass:passHash}, (error,results)=>{
             if(error){
                 console.log(error);
             }else{
@@ -28,7 +28,7 @@ exports.register = async(req,res)=>{
 
 exports.login = async(req,res)=>{
     try {
-        const username = req.body.username;
+        const username = req.body.user;
         const pass = req.body.pass;
         // console.log(username ,'-',pass);
         if(!username || !pass){
@@ -42,7 +42,7 @@ exports.login = async(req,res)=>{
                 ruta:'login'
             })
         }else{
-                conection.query('SELECT * FROM users WHERE user = ?',[username], async (error,results)=>{
+                conection.query('SELECT * FROM users WHERE username = ?',[username], async (error,results)=>{
                 if(results == 0 || ! (await bcryptjs.compare(pass, results[0].pass)) ){
                     res.render('login',{
                         alert:true,
