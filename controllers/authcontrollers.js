@@ -102,3 +102,12 @@ exports.logout = (req,res)=>{
     res.clearCookie('jwt');
     return res.redirect('/');
 }
+
+// SELECT i.idInformes, d.nombre AS departamento, l.nombre AS localidad, t.nombre AS tipo, i.fecha, i.titulo, i.rutaImagen, i.Informe
+// FROM informes AS i
+// JOIN departamento AS d ON i.Departamento_idDepartamento = d.idDepartamento
+// JOIN localidad AS l ON i.localidad_IdLocalidad = l.idLocalidad
+// JOIN tipo AS t ON i.Tipo_idTipo = t.idTipo
+// WHERE d.idDepartamento = 1
+//   AND l.idLocalidad = 1
+//   AND t.idTipo = 2;
